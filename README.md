@@ -101,7 +101,7 @@ Do not commit `.env` or share database passwords and secret keys. The `.env.exam
 
 ### 5. Set up MySQL
 
-Start MySQL Server and create/configure the database and tables using the SQL script or instructions in the `database` item. Make sure the database settings in `.env` match your local MySQL configuration.
+Start MySQL Server, then execute the SQL script in the `database` file using MySQL Workbench or the MySQL command line. It creates the `accident_risk_db` database and the `users` table. Make sure the database settings in `.env` match your local MySQL configuration.
 
 ### 6. Run the application
 
