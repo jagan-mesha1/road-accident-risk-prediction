@@ -126,7 +126,17 @@ http://127.0.0.1:5000
 
 The project explores how machine learning can be integrated into a web application to support data-driven road-safety analysis. Its predictions are estimates based on the model and supplied inputs; they should not be treated as definitive assessments of real-world road safety.
 
+## Application Screenshot
+
+Here is an example of the road accident risk prediction interface:
+
+![Road Accident Risk Prediction Result](screenshots/prediction-result.png)
+
+The example shows a sample prediction result and the corresponding safety suggestions.
+
 ## Author
 
 **Mesha Jagan**  
 GitHub: [jagan-mesha1](https://github.com/jagan-mesha1)
+
+
