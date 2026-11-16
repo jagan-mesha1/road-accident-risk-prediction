@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="prediction-container">
+    <h2>🚗 Accident Risk Predictor</h2>
+    <form method="POST" id="predictionForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Number of Lanes</label>
+                <input type="number" name="num_lanes" step="1" min="1" max="10" value="2" required>
+            </div>
+            <div class="form-group">
+                <label>Curvature (0–1)</label>
+                <input type="number" name="curvature" step="0.01" min="0" max="1" value="0.1" required>
+            </div>
+            <div class="form-group">
+                <label>Speed Limit (km/h)</label>
+                <input type="number" name="speed_limit" step="5" min="20" max="140" value="50" required>
+            </div>
+            <div class="form-group">
+                <label>Reported Accidents (past year)</label>
+                <input type="number" name="num_reported_accidents" step="1" min="0" max="500" value="5" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Road Type</label>
+                <select name="road_type">
+                    <option>Highway</option>
+                    <option>Rural</option>
+                    <option>Urban</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Lighting</label>
+                <select name="lighting">
+                    <option>Good</option>
+                    <option>Dim</option>
+                    <option>Night</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Weather</label>
+                <select name="weather">
+                    <option>Clear</option>
+                    <option>Rainy</option>
+                    <option>Foggy</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Road Signs Present</label>
+                <select name="road_signs_present">
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Public Road</label>
+                <select name="public_road">
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Time of Day</label>
+                <select name="time_of_day">
+                    <option>Day</option>
+                    <option>Evening</option>
+                    <option>Morning</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Holiday</label>
+                <select name="holiday">
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>School Season</label>
+                <select name="school_season">
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">🚀 Predict Risk</button>
+    </form>
+
+    {% if risk_score is not none %}
+    <div class="result-card">
+        <h3>🚦 Accident Risk Assessment</h3>
+        <div class="risk-value" style="color: {{ color }};">
+            {{ "%.2f"|format(risk_score) }} &nbsp; <span style="font-size:1.2rem;">({{ risk_level }} Risk)</span>
+        </div>
+        
+
+        <div class="suggestions">
+            <h4>💡 Safety Suggestions</h4>
+            <ul>
+            {% for suggestion in suggestions %}
+                <li>{{ suggestion }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+
+        
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+<style>
+    .suggestions {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 12px;
+        margin-top: 20px;
+        text-align: left;
+    }
+    .suggestions ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+    .suggestions li {
+        margin: 8px 0;
+        font-size: 0.95rem;
+    }
+    .risk-value {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    .risk-meter {
+        background: #e0e0e0;
+        border-radius: 10px;
+        height: 12px;
+        margin: 15px 0;
+        overflow: hidden;
+    }
+    .risk-bar {
+        height: 100%;
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+    .result-card {
+        margin-top: 25px;
+        padding: 20px;
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .prediction-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .form-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        flex: 1;
+        min-width: 150px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>

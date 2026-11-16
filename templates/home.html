@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <h1>🚦 Predict Road Accident Risk Instantly</h1>
+    <p>Leverage AI to assess crash likelihood based on road, traffic, and weather conditions.</p>
+    {% if not session.user_id %}
+        <a href="{{ url_for('register') }}" class="btn btn-primary">Get Started →</a>
+    {% else %}
+        <a href="{{ url_for('prediction') }}" class="btn btn-primary">Go to Predictor →</a>
+    {% endif %}
+</section>
+
+<div class="stats">
+    <div class="stat-card">
+        <div class="stat-number">500k+</div>
+        <div>Data Points Trained</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">0.88</div>
+        <div>R² Score (Validation)</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">15+</div>
+        <div>Risk Factors Analyzed</div>
+    </div>
+</div>
+
+<section class="features">
+    <div class="feature-card">
+        <h3>📊 Smart Inputs</h3>
+        <p>Curvature, speed limits, accidents history, lighting, weather – all matter.</p>
+    </div>
+    <div class="feature-card">
+        <h3>🤖 ML‑Powered</h3>
+        <p>Random Forest & XGBoost models deliver consistent, unbiased risk scores.</p>
+    </div>
+    <div class="feature-card">
+        <h3>🔒 Privacy First</h3>
+        <p>Your data stays yours. Used only for real‑time prediction, never stored.</p>
+    </div>
+</section>
+
+<section style="background: #13131c; border-radius: 24px; padding: 1.5rem; margin-top: 2rem;">
+    <h3 style="color: #ff7f2a;">Why Risk Prediction Matters</h3>
+    <p>Every year, millions of road accidents occur due to preventable factors. Our tool helps urban planners, drivers, and safety analysts understand high‑risk zones before accidents happen. By combining historical data with real‑time inputs, you can make informed decisions to save lives.</p>
+</section>
+{% endblock %}

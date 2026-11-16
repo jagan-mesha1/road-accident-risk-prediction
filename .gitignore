@@ -1,0 +1,23 @@
+
+# Python virtual environment
+venv/
+venv_new/
+.venv/
+ 
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Private configuration
+.env
+.env.*
+!.env.example
+
+# IDE and operating system
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

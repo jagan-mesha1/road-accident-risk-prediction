@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="about-section">
+    <h1>About Accident Risk Predictor</h1>
+    <p>This project was born from the need to democratize road safety analytics. Using a dataset from Kaggle’s Playground Series, we built a robust machine learning model that estimates accident risk on a scale from 0 (very safe) to 1 (extremely dangerous).</p>
+
+    <h2 style="color: #2ecc71; margin-top: 1.5rem;">How It Works</h2>
+    <div class="process-steps">
+        <div class="step">
+            <span class="step-icon">1️⃣</span>
+            <strong>Input Data</strong>
+            <p>Road geometry, traffic, weather, and time context.</p>
+        </div>
+        <div class="step">
+            <span class="step-icon">2️⃣</span>
+            <strong>Preprocessing</strong>
+            <p>Scaling, encoding, and feature engineering.</p>
+        </div>
+        <div class="step">
+            <span class="step-icon">3️⃣</span>
+            <strong>Prediction</strong>
+            <p>Random Forest model outputs risk score.</p>
+        </div>
+    </div>
+
+    <h2 style="color: #2ecc71;">Key Features</h2>
+    <ul>
+        <li>✅ <strong>Comprehensive factors</strong> – 12 input features including curvature, speed limit, reported accidents, lighting, weather, holiday, school season, and more.</li>
+        <li>✅ <strong>High accuracy</strong> – Achieved R² of 0.8828 on validation data.</li>
+        <li>✅ <strong>User authentication</strong> – Secure login & registration system.</li>
+        <li>✅ <strong>Instant results</strong> – Get risk score in seconds.</li>
+    </ul>
+
+    <h2 style="color: #2ecc71;">Technology Stack</h2>
+    <p>Flask (Python) backend, MySQL for user management, scikit‑learn & XGBoost for ML, and a custom dark theme frontend with CSS animations.</p>
+
+    <div style="background: #0e0e16; padding: 1rem; border-radius: 20px; margin-top: 2rem;">
+        <p>📢 <strong>Disclaimer:</strong> This tool is for educational and demonstrative purposes. Real‑world safety decisions should always involve expert analysis and local regulations.</p>
+    </div>
+</section>
+{% endblock %}
