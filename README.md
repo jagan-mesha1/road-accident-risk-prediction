@@ -134,6 +134,24 @@ Here is an example of the road accident risk prediction interface:
 
 The example shows a sample prediction result and the corresponding safety suggestions.
 
+
+## Project Architecture
+
+The application follows this workflow:
+
+```mermaid
+flowchart TD
+    A[User] --> B[Flask Web Application]
+    B --> C{Choose an action}
+    C -->|Register or login| D[MySQL Database]
+    C -->|Submit road conditions| E[Data Preprocessing]
+    E --> F[Feature Engineering]
+    F --> G[Encoding and Scaling]
+    G --> H[XGBoost Model]
+    H --> I[Risk Score Prediction]
+    I --> J[Risk Level and Safety Suggestions]
+    J --> K[Results Displayed in Web Page]
+```
 ## Author
 
 **Mesha Jagan**  
